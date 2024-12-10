@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: white;
+        }
+        .container {
+            margin-top: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        a {
+            color: white;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .list-group-item {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        {% if session['user'] %}
+        <h2>Welcome to the Dashboard, {{ session['user'] }}</h2>
+        <div class="mt-4">
+            <nav>
+                <ul class="list-group">
+                    <li class="list-group-item"><a href="{{ url_for('profile') }}">View/Edit Profile</a></li>
+                    <li class="list-group-item"><a href="{{ url_for('faq') }}">FAQs</a></li>
+                    <li class="list-group-item"><a href="{{ url_for('contact_support') }}">Contact Support</a></li>
+                    <li class="list-group-item"><a href="{{ url_for('search_history') }}">Search Analysis History</a></li>
+                    <li class="list-group-item"><a href="{{ url_for('generate_report') }}">Generate Report</a></li>
+                    <li class="list-group-item"><a href="{{ url_for('logout') }}">Logout</a></li>
+                    <li class="list-group-item"><a href="{{ url_for('upload_image') }}" class="btn btn-primary">Upload Image</a></li>
+                </ul>
+            </nav>
+        </div>
+        {% else %}
+        <h3>You must be logged in to view the dashboard.</h3>
+        {% endif %}
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

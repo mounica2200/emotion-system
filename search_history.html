@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Analysis History</title>
+</head>
+<body>
+    <h2>Search Analysis History</h2>
+    
+    <form method="POST">
+        <label for="emotion">Emotion:</label>
+        <input type="text" id="emotion" name="emotion" placeholder="Enter emotion to search"><br><br>
+        
+        <button type="submit">Search</button>
+    </form>
+
+    <h3>Search Results:</h3>
+    {% if results %}
+        <ul>
+        {% for result in results %}
+            <li>Emotion: {{ result.emotion }} - Date: {{ result.date }}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No results found for the search term.</p>
+    {% endif %}
+
+    <br><a href="{{ url_for('dashboard') }}">Back to Dashboard</a>
+</body>
+</html>
